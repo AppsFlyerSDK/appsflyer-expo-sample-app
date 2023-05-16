@@ -43,8 +43,7 @@ Go to your AppsFlyer account and create an iOS or Android app(or both). Learn mo
 
 
 ### 7. Build your app and run it on your device
-> Keep in mind that Deep Link can be received in simulators, but its parameters usually get lost in the way.
-> If you want to experience the complete flow, please run your app on a real iOS or Android device(and not a simulated one).
+> We highly recommend running and testing your app on a real iOS or Android device(and not a simulated one).
 
 ### 8. Click on your link, get an item or send one to your friends!
 - Now that your app is running, click the link and see your DeepLink item in the `Modal` window.
