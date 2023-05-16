@@ -1,0 +1,454 @@
+{
+   "categories": [
+      {
+         "id": 1,
+         "name": "Vegetables",
+         "color": "#D1F3BC",
+         "items": [
+            {
+               "id": 1,
+               "name": "Tomato",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍅"
+            },
+            {
+               "id": 2,
+               "name": "Olive",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🫒"
+            },
+            {
+               "id": 3,
+               "name": "Avocado",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥑"
+            },
+            {
+               "id": 4,
+               "name": "Eggplant",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍆"
+            },
+            {
+               "id": 5,
+               "name": "Potato",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥔"
+            },
+            {
+               "id": 6,
+               "name": "Carrot",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥕"
+            },
+            {
+               "id": 7,
+               "name": "Corn",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🌽"
+            },
+            {
+               "id": 8,
+               "name": "Bell Pepper",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🫑"
+            },
+            {
+               "id": 9,
+               "name": "Hot Pepper",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🌶️"
+            },
+            {
+               "id": 10,
+               "name": "Cucumber",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥒"
+            },
+            {
+               "id": 11,
+               "name": "Lettuce",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥬"
+            },
+            {
+               "id": 12,
+               "name": "Broccoli",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥦"
+            },
+            {
+               "id": 13,
+               "name": "Garlic",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "Emojy": "🧄"
+            },
+            {
+               "id": 14,
+               "name": "Onion",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🧅"
+            },
+            {
+               "id": 15,
+               "name": "Mushroom",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍄"
+            }
+         ]
+      },
+      {
+         "id": 2,
+         "name": "Fruits",
+         "color": "#F4D6F1",
+         "items": [
+            {
+               "id": 1,
+               "name": "Grapes",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍇"
+            },
+            {
+               "id": 2,
+               "name": "Coconut",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥥"
+            },
+            {
+               "id": 3,
+               "name": "Melon",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍈"
+            },
+            {
+               "id": 4,
+               "name": "Watermelon",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍉"
+            },
+            {
+               "id": 5,
+               "name": "Tangerine",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍊"
+            },
+            {
+               "id": 6,
+               "name": "Lemon",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "Emojy": "🍋"
+            },
+            {
+               "id": 7,
+               "name": "Banana",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍌"
+            },
+            {
+               "id": 8,
+               "name": "Pineapple",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍍"
+            },
+            {
+               "id": 9,
+               "name": "Mango",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥭"
+            },
+            {
+               "id": 10,
+               "name": "Red Apple",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍎"
+            },
+            {
+               "id": 11,
+               "name": "Green Apple",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍏"
+            },
+            {
+               "id": 12,
+               "name": "Pear",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍐"
+            },
+            {
+               "id": 13,
+               "name": "Peach",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍑"
+            },
+            {
+               "id": 14,
+               "name": "Cherries",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍒"
+            },
+            {
+               "id": 15,
+               "name": "Strawberry",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍓"
+            },
+            {
+               "id": 16,
+               "name": "Blueberries",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🫐"
+            },
+            {
+               "id": 17,
+               "name": "Kiwi",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥝"
+            }
+         ]
+      },
+      {
+         "id": 3,
+         "name": "Dairy",
+         "color": "#FFF2CF",
+         "items": [
+            {
+               "id": 1,
+               "name": "Egg",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥚"
+            },
+            {
+               "id": 2,
+               "name": "Butter",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🧈"
+            },
+            {
+               "id": 3,
+               "name": "Ice Cream",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍦"
+            },
+            {
+               "id": 4,
+               "name": "Milk",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥛"
+            },
+            {
+               "id": 5,
+               "name": " Cheese",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🧀"
+            }
+         ]
+      },
+      {
+         "id": 4,
+         "name": "Pastries",
+         "color": "#EED9C8",
+         "items": [
+            {
+               "id": 1,
+               "name": "Bread",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍞"
+            },
+            {
+               "id": 2,
+               "name": "roissant",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥐"
+            },
+            {
+               "id": 3,
+               "name": "Baguette",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥖"
+            },
+            {
+               "id": 4,
+               "name": "Flatbread",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🫓"
+            },
+            {
+               "id": 5,
+               "name": "Pretzel",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥨"
+            },
+            {
+               "id": 6,
+               "name": "Bagel",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥯"
+            }
+         ]
+      },
+      {
+         "id": 5,
+         "name": "Dried Goods",
+         "color": "#EFEFEF",
+         "items": [
+            {
+               "id": 1,
+               "name": "Beans",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🫘"
+            },
+            {
+               "id": 2,
+               "name": "Chestnut",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🌰"
+            },
+            {
+               "id": 3,
+               "name": "Peanuts",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🥜"
+            },
+            {
+               "id": 4,
+               "name": "Rice",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍚"
+            },
+            {
+               "id": 5,
+               "name": "Pasta",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🍝"
+            },
+            {
+               "id": 6,
+               "name": "Tea Bags",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🫖"
+            },
+            {
+               "id": 7,
+               "name": "Salt",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🧂"
+            }
+         ]
+      },
+      {
+         "id": 6,
+         "name": "Plants Products",
+         "color": "#DAF6FF",
+         "items": [
+            {
+               "id": 1,
+               "name": "Falafel",
+               "unitsMode": true,
+               "units": 0,
+               "kg": 0.0,
+               "emoji": "🧆"
+            }
+         ]
+      }
+   ]
+}

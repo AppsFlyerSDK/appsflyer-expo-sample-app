@@ -1,0 +1,85 @@
+{
+  "expo": {
+    "name": "groceryLink",
+    "slug": "groceryLink",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bitcode": false,
+      "supportsTablet": true,
+      "bundleIdentifier": "com.appsflyer.grocerylink",
+      "associatedDomains": [
+        "applinks:grocerylink-af.onelink.me"
+      ]
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.appsflyer.grocerylink",
+      "softwareKeyboardLayoutMode": "pan",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "https",
+              "host": "grocerylink-af.onelink.me",
+              "pathPrefix": "/scVs"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        },
+        {
+          "action": "VIEW",
+          "data": [
+            {}
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "react-native-appsflyer",
+        {}
+      ],
+      [
+        "./custom_plugins/withNoBitcode"
+      ],
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "Allowing app tracking will improve the customization of ads"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7453ddad-e578-4196-a6ff-f0e3d8caaef9"
+      }
+    }
+  }
+}

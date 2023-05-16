@@ -1,0 +1,44 @@
+{
+  "name": "grocerylink",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.18.1",
+    "@react-native-community/checkbox": "^0.5.14",
+    "@react-navigation/bottom-tabs": "^6.5.3",
+    "@react-navigation/native": "^6.1.4",
+    "@react-navigation/stack": "^6.3.14",
+    "@rneui/base": "^4.0.0-rc.7",
+    "@rneui/themed": "^4.0.0-rc.7",
+    "expo": "~48.0.15",
+    "expo-app-loading": "~2.1.1",
+    "expo-checkbox": "~2.3.1",
+    "expo-dev-client": "~2.1.6",
+    "expo-modules-core": "~1.2.6",
+    "expo-navigation-bar": "~2.1.1",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
+    "react": "18.2.0",
+    "react-native": "0.71.7",
+    "react-native-appsflyer": "^6.10.2",
+    "react-native-circle-checkbox": "^0.1.6",
+    "react-native-dropdown-select-list": "^2.0.4",
+    "react-native-gesture-handler": "~2.9.0",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-rounded-checkbox": "^0.3.3",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0",
+    "react-native-svg": "13.4.0",
+    "expo-tracking-transparency": "~3.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.20.7"
+  },
+  "private": true
+}
