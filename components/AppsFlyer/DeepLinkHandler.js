@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import appsFlyer from "react-native-appsflyer";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     Modal,
     StyleSheet,
@@ -10,9 +11,11 @@ import {
 
 
 const DeepLinkHandler = (props) => {
-    const { categoryList, currentGroceryList, setCurrentGroceryList } = props;
+    const { categoryList, currentGroceryList, setCurrentGroceryList, onProcessDeepLinkFromConversionData } = props;
     const [onDeepLinkModalVisible, setOnDeepLinkModalVisible] = useState(false);
     const [deepLinkValues, setDeepLinkValues] = useState({});
+    const hasRegisteredRef = useRef(false);
+    const callbackRef = useRef(onProcessDeepLinkFromConversionData);
 
     useEffect(() => {
         if (Object.keys(deepLinkValues).length > 0) {
@@ -20,29 +23,97 @@ const DeepLinkHandler = (props) => {
         }
     }, [deepLinkValues])
 
+    // Function to process deep link data
+    const processDeepLinkData = useCallback(async (deepLinkData) => {
+        if (!deepLinkData?.data?.deep_link_value) {
+            // UDL failed to process - ensure flag is false so GCD can process it
+            try {
+                await AsyncStorage.setItem('deferred_deep_link_processed_flag', 'false');
+                console.log('UDL failed: no deep_link_value - set flag to false for GCD processing');
+            } catch (error) {
+                console.error('Error setting deferred_deep_link_processed_flag:', error);
+            }
+            return;
+        }
+        
+        try {
+            const categoryName = deepLinkData.data.deep_link_value;
+            const itemName = deepLinkData.data.deep_link_sub1;
+            const unitsMode = deepLinkData.data.deep_link_sub2 === 'true';
+            const quantity = isNaN(Number(deepLinkData.data.deep_link_sub3)) ? 0 : Number(deepLinkData.data.deep_link_sub3)
+            const reffererName = deepLinkData.data.deep_link_sub4 ? deepLinkData.data.deep_link_sub4 : null;
+
+            setDeepLinkValues({
+                categoryName,
+                itemName,
+                unitsMode,
+                quantity,
+                ...(reffererName ? { reffererName } : {}),
+            });
+            console.log('Deep Link was found');
+            console.log(`${categoryName}, ${itemName}, ${unitsMode}, ${quantity}`);
+
+            // Set deferred_deep_link_processed_flag to true when UDL successfully processes a deep link
+            // Check if flag is already true - if so, this was called from GCD (which already set it)
+            // If flag is false, this is UDL processing it, so set the flag
+            const flagValue = await AsyncStorage.getItem('deferred_deep_link_processed_flag');
+            if (flagValue !== 'true') {
+                // Flag is false, so this is UDL processing the deep link successfully
+                await AsyncStorage.setItem('deferred_deep_link_processed_flag', 'true');
+                console.log('Set deferred_deep_link_processed_flag to true (UDL processed deep link)');
+            } else {
+                // Flag is already true, so this was called from GCD (which already set it)
+                console.log('Flag already set by GCD - skipping flag update in processDeepLinkData');
+            }
+        } catch (error) {
+            // UDL failed to process - ensure flag is false so GCD can process it
+            console.error('Error processing deep link in UDL:', error);
+            try {
+                await AsyncStorage.setItem('deferred_deep_link_processed_flag', 'false');
+                console.log('UDL processing failed - set flag to false for GCD processing');
+            } catch (flagError) {
+                console.error('Error setting deferred_deep_link_processed_flag:', flagError);
+            }
+        }
+    }, []);
+
+    // Keep callback ref updated
     useEffect(() => {
-        const onDeepLinkCanceller = appsFlyer.onDeepLink(res => {
+        callbackRef.current = onProcessDeepLinkFromConversionData;
+    }, [onProcessDeepLinkFromConversionData]);
+
+    // Expose the function to parent component (only once)
+    useEffect(() => {
+        const callback = callbackRef.current;
+        if (callback && processDeepLinkData && !hasRegisteredRef.current) {
+            hasRegisteredRef.current = true; // Set flag FIRST to prevent race condition
+            callback(processDeepLinkData);
+        }
+        // Only run once on mount
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        const onDeepLinkCanceller = appsFlyer.onDeepLink(async (res) => {
             if (res?.deepLinkStatus === 'FOUND') {
-                console.log(JSON.stringify(res, null, 2));
-                const categoryName = res.data.deep_link_value;
-                const itemName = res.data.deep_link_sub1;
-                const unitsMode = res.data.deep_link_sub2 === 'true';
-                const quantity = Number(res.data.deep_link_sub3) === NaN ? 0 : Number(res.data.deep_link_sub3)
-                const reffererName = res.data.deep_link_sub4 ? res.data.deep_link_sub4 : null;
-
-            
-                setDeepLinkValues({
-                    categoryName,
-                    itemName,
-                    unitsMode,
-                    quantity,
-                    ...(reffererName ? { reffererName } : {}),
-                });
-                console.log('Deep Link was found');
-                console.log(`${categoryName}, ${itemName}, ${unitsMode}, ${quantity}`);
+                
+                // Check if this is a deferred deep link and flag is already true
+                if (res?.isDeferred === true) {
+                    try {
+                        const flagValue = await AsyncStorage.getItem('deferred_deep_link_processed_flag');
+                        if (flagValue === 'true') {
+                            console.log('Deferred deep link was already processed by GCD. This iteration can be skipped.');
+                            // Reset flag to false before skipping
+                            await AsyncStorage.setItem('deferred_deep_link_processed_flag', 'false');
+                            return;
                         }
+                    } catch (error) {
+                        console.error('Error reading deferred_deep_link_processed_flag:', error);
+                    }
+                }
+                processDeepLinkData(res);
+            }
             else if (res?.deepLinkStatus === 'NOT_FOUND') {
-
                 console.log('Deep Link was not found');
             }
 
@@ -51,7 +122,7 @@ const DeepLinkHandler = (props) => {
         return () => {
             onDeepLinkCanceller()
         };
-    }, [])
+    }, [processDeepLinkData])
 
 
     const addItemToListOnDeepLink = (categoryName, itemName, unitsMode, quantity) => {
@@ -103,7 +174,7 @@ const DeepLinkHandler = (props) => {
                 transparent={true}
                 visible={onDeepLinkModalVisible}
                 onRequestClose={() => {
-                    setOnDeepLinkModalVisable(!onDeepLinkModalVisible);
+                    setOnDeepLinkModalVisible(!onDeepLinkModalVisible);
                 }}>
                 <View style={styles.modalWrapper}>
                     <View style={styles.centeredView}>

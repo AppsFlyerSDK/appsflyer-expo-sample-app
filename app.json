@@ -34,11 +34,11 @@
       "intentFilters": [
         {
           "action": "VIEW",
+          "autoVerify": true,
           "data": [
             {
               "scheme": "https",
-              "host": "grocerylink-af.onelink.me",
-              "pathPrefix": "/scVs"
+              "host": "grocerylink-af.onelink.me"
             }
           ],
           "category": [
@@ -49,7 +49,10 @@
         {
           "action": "VIEW",
           "data": [
-            {}
+            {
+              "scheme": "exp+grocerylink",
+              "host": "expo-development-client"
+            }
           ],
           "category": [
             "BROWSABLE",

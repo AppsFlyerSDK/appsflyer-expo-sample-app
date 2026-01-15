@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { View } from 'react-native';
 import 'react-native-gesture-handler';
 import UserInviteHandler from './UserInviteHandler';
@@ -8,6 +8,13 @@ import InitializeSDKHandler from './InitializeSDKHandler';
 
 const AppsFlyerHandler = (props) => {
     const { categoryList, currentGroceryList, setCurrentGroceryList, userInviteParams } = props;
+    const processDeepLinkCallbackRef = useRef(null);
+
+    const handleSetCallback = useCallback((callback) => {
+        if (processDeepLinkCallbackRef.current !== callback) {
+            processDeepLinkCallbackRef.current = callback;
+        }
+    }, []);
 
     const displayConversionData = true // set to true if you wish to log to the console the Conversion Data
     const useDeepLink = true //set to true if you wish to use Deep Link
@@ -16,7 +23,7 @@ const AppsFlyerHandler = (props) => {
     return (
 
         <View>
-            {displayConversionData && <OnInstallConversionData />}
+            {displayConversionData && <OnInstallConversionData processDeepLinkCallbackRef={processDeepLinkCallbackRef} />}
 
             {useUserInvite && (
                 <UserInviteHandler
@@ -29,6 +36,7 @@ const AppsFlyerHandler = (props) => {
                     categoryList={categoryList}
                     currentGroceryList={currentGroceryList}
                     setCurrentGroceryList={setCurrentGroceryList}
+                    onProcessDeepLinkFromConversionData={handleSetCallback}
                 />
             )}
 
